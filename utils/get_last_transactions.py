@@ -21,11 +21,14 @@ def get_five_latest_transactions():
         date_and_time.append(transaction['date'])
 
     date_sorted = sorted(date_and_time, reverse=True)
-    date_sorted = date_sorted[0:5]
+    date_sorted = date_sorted[0:6]
 
-    for transaction in executed_transactions:
-        if transaction['date'] in date_sorted:
-            five_latest_transactions.append(transaction)
+    index = 0
+    while index < 5:
+        for transaction in executed_transactions:
+            if transaction['date'] in date_sorted[index]:
+                five_latest_transactions.append(transaction)
+                index += 1
 
     return five_latest_transactions
 
