@@ -30,6 +30,7 @@ class Transaction:
 
         else:
             card_info = self.account_from
+            card_name = ''
 
             if card_info.count(' ') == 1:
                 card_name = card_info.split()[0]
@@ -51,6 +52,7 @@ class Transaction:
 
         else:
             card_info = self.account_to
+            card_name = ''
 
             if card_info.count(' ') == 1:
                 card_name = card_info.split()[0]
@@ -66,5 +68,9 @@ class Transaction:
 
     def show_info(self):
         print(f'{self.reverse_date()} {self.description}')
-        print(f'{self.hide_and_split_bill_number_from()} -> {self.hide_and_split_bill_number_to()}')
+        if self.hide_and_split_bill_number_from() == '':
+            print(f'{self.hide_and_split_bill_number_to()}')
+        else:
+            print(f'{self.hide_and_split_bill_number_from()} -> {self.hide_and_split_bill_number_to()}')
+
         print(f'{self.operation_amount["amount"]} {self.operation_amount["currency"]["name"]}')

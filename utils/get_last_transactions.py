@@ -31,4 +31,3 @@ def get_five_latest_transactions():
                 index += 1
 
     return five_latest_transactions
-

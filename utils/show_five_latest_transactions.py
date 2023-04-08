@@ -26,3 +26,4 @@ def show_five_latest_transactions():
         transaction.show_info()
         print('')
 
+show_five_latest_transactions()
