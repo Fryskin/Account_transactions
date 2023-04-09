@@ -3,7 +3,7 @@ import json
 
 def read_file(path='operations.json'):
     """
-    Reading file with info about transactions and returning content from file.
+    Reading file with info about transactions and returns content from file.
     :param path: file with transactions.
     :return: content from file.
     """
@@ -14,6 +14,11 @@ def read_file(path='operations.json'):
 
 
 def sort_transactions(path=read_file()):
+    """
+    This def sorting info and returns list with dates for comparisons.
+    :param path: return from function which returns info from json file.
+    :return: list with dates for comparisons.
+    """
     content = path
 
     executed_transactions = []
@@ -29,6 +34,13 @@ def sort_transactions(path=read_file()):
 
 
 def return_sorted_transactions(path_1=read_file(), path_2=sort_transactions()):
+    """
+    This def takes return from def which returns info from json file and list with dates for comparisons
+    and comparing with returning 5 coincidences.
+    :param path_1: return from def which returns info from json file.
+    :param path_2: list with dates for comparisons.
+    :return: list with five transactions.
+    """
     content = path_1
     transactions_sorted_date = path_2
 
@@ -43,6 +55,11 @@ def return_sorted_transactions(path_1=read_file(), path_2=sort_transactions()):
 
 
 def get_dates_and_descriptions(path=return_sorted_transactions()):
+    """
+    Takes list with five transactions and returns modified dates and descriptions.
+    :param path: list with five transactions.
+    :return: modified dates and descriptions.
+    """
     five_latest_transactions = path
 
     dates = []
@@ -59,6 +76,11 @@ def get_dates_and_descriptions(path=return_sorted_transactions()):
 
 
 def get_accounts_from_and_accounts_to(path=return_sorted_transactions()):
+    """
+    Takes list with five transactions and returns modified accounts from and accounts to.
+    :param path: list with five transactions.
+    :return: modified accounts from and accounts to.
+    """
     five_latest_transactions = path
 
     accounts_from = []
@@ -92,6 +114,11 @@ def get_accounts_from_and_accounts_to(path=return_sorted_transactions()):
 
 
 def get_amounts_and_currencies(path=return_sorted_transactions()):
+    """
+    Takes list with five transactions and returns amounts, currencies.
+    :param path: list with five transactions.
+    :return: amounts, currencies.
+    """
     five_latest_transactions = path
 
     amounts = []
@@ -105,6 +132,14 @@ def get_amounts_and_currencies(path=return_sorted_transactions()):
 
 def show_info_about_latest_transactions(path_1=get_dates_and_descriptions(), path_2=get_accounts_from_and_accounts_to(),
                                         path_3=get_amounts_and_currencies()):
+    """
+    Takes modified dates and descriptions,modified accounts from and accounts to, amounts, currencies,
+    and printing information about operation.
+    :param path_1: modified dates and descriptions.
+    :param path_2: modified accounts from and accounts to.
+    :param path_3: amounts, currencies.
+    :print: information about operation.
+    """
 
     dates, descriptions = path_1
     accounts_from, accounts_to = path_2
@@ -122,4 +157,3 @@ def show_info_about_latest_transactions(path_1=get_dates_and_descriptions(), pat
         print('')
 
 
-print(sort_transactions())
